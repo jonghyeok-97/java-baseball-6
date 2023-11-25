@@ -1,12 +1,19 @@
 package baseball.domain;
 
+import java.util.List;
+
 public class GameNumber {
-    //private User user;
-    private Computer computer;
+    private final List<Integer> numbers;
 
-    public void create() {
+    public GameNumber(List<Integer> numbers) {
+        validate(numbers);
+        this.numbers = numbers;
+    }
 
-        int randomNumber = computer.pickAtRandom();
+    private void validate(List<Integer> numbers) {
+        if (numbers.size() != 3) {
+            throw new IllegalArgumentException("세 자리 수여야 합니다.");
+        }
     }
 
 }
