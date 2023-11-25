@@ -35,5 +35,16 @@ public class GameNumberTest {
                 .isInstanceOf(IllegalArgumentException.class);
     }
 
+    @DisplayName("중복되면 예외 발생하는 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"114", "911", "355"})
+    void validateDuplicate(String number) {
+        List<Integer> numbers = Stream.of(number.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        Assertions.assertThatThrownBy(() -> new GameNumber(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
 
 }

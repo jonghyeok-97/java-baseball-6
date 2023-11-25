@@ -20,6 +20,12 @@ public class GameNumber {
                 .ifPresent(number -> {
                     throw new IllegalArgumentException("숫자에 0이 포함될 수 없습니다.");
                 });
+        int numberCount = (int) numbers.stream()
+                .distinct()
+                .count();
+        if (numberCount != 3) {
+            throw new IllegalArgumentException("숫자는 중복될 수 없습니다.");
+        }
     }
 
 }
