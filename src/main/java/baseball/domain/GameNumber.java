@@ -5,7 +5,8 @@ public class GameNumber {
     private Computer computer;
 
     public void create() {
-        int randomNumber = computer.select();
+
+        int randomNumber = computer.pickAtRandom();
     }
 
 }
