@@ -18,9 +18,22 @@ public class GameNumberTest {
         List<Integer> numbers = Stream.of(number.split(""))
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
+
         Assertions.assertThatThrownBy(() -> new GameNumber(numbers))
                 .isInstanceOf(IllegalArgumentException.class);
-
-
     }
+
+    @DisplayName("숫자에 0이 포함되면 예외 발생하는 테스트")
+    @ParameterizedTest
+    @ValueSource(strings = {"104", "012"})
+    void validateContainZero(String number) {
+        List<Integer> numbers = Stream.of(number.split(""))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+
+        Assertions.assertThatThrownBy(() -> new GameNumber(numbers))
+                .isInstanceOf(IllegalArgumentException.class);
+    }
+
+
 }
